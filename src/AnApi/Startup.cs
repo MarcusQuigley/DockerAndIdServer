@@ -29,7 +29,8 @@ namespace AnApi
             services.AddAuthentication("Bearer")
             .AddJwtBearer("Bearer", options =>
             {
-                options.Authority = "https://localhost:7301";
+                options.Authority = "http://localhost:7300";
+                options.RequireHttpsMetadata = false;
 
                 options.TokenValidationParameters = new TokenValidationParameters
                 {

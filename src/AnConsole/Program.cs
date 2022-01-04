@@ -14,7 +14,7 @@ namespace AnConsole
             var disco = await client.GetDiscoveryDocumentAsync(
                 new DiscoveryDocumentRequest
                 {
-                    Address = "https://localhost:7301",
+                    Address = "http://localhost:7300",
                     Policy =
                     {
                         ValidateIssuerName = false
