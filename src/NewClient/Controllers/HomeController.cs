@@ -26,8 +26,8 @@ namespace NewClient.Controllers
 
         public async Task<IActionResult> Index()
         {
-            // var data = await _apiService.UserData();
-            var data = await _weatherService.WeatherData();
+            var data = await _apiService.UserData();
+            //var data = await _weatherService.WeatherData();
 
             var model = new UserModel() { Data = data };
 

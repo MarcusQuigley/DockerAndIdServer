@@ -27,6 +27,7 @@ namespace IdentityServer
             {
                 // see https://identityserver4.readthedocs.io/en/latest/topics/resources.html
                 options.EmitStaticAudienceClaim = true;
+                options.IssuerUri = "http://the-identityserver/";
             })
                 .AddInMemoryIdentityResources(Config.IdentityResources)
                 .AddInMemoryApiScopes(Config.ApiScopes)
@@ -46,7 +47,6 @@ namespace IdentityServer
             // uncomment if you want to add MVC
             //app.UseStaticFiles();
             //app.UseRouting();
-            
             app.UseIdentityServer();
 
             // uncomment, if you want to add MVC

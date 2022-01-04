@@ -30,7 +30,11 @@ namespace NewClient.Services
             }
 
             var discoveryDocumentResponse =
-                await _client.GetDiscoveryDocumentAsync(_configuration["IdentityUri"]);
+                await _client.GetDiscoveryDocumentAsync(new DiscoveryDocumentRequest
+                {
+                    Address = _configuration["IdentityUri"],
+                    Policy = { RequireHttps = false }
+                });
             if (discoveryDocumentResponse.IsError)
             {
                 throw new Exception(discoveryDocumentResponse.Error);

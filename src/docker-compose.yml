@@ -9,7 +9,7 @@ services:
       context: AnApi
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-      IdentityUri: http://localhost/"
+      IdentityUri: http://the-identityserver/
     ports:
       - 7200:80
 
@@ -29,12 +29,12 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: https://+;http://+
-      ASPNETCORE_HTTPS_PORT: 8081
-      IdentityUri: http://the-identityserver/"
-      AnApiUri: "http://the-api"
+      ASPNETCORE_HTTPS_PORT: 7101
+      IdentityUri: http://the-identityserver/
+      AnApiUri: http://the-api/
     ports:
-      - 7101:80
-      - 7100:443
+      - 7100:80
+      - 7101:443
     volumes:
       - ${APPDATA}\microsoft\UserSecrets\:/root/.microsoft/usersecrets
       - ${USERPROFILE}\.aspnet\https:/root/.aspnet/https/
