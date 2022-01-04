@@ -10,7 +10,7 @@ namespace AnApi.Controllers
 {
     [ApiController]
     [Authorize]
-    [Route("identity")]
+    [Route("api/identity")]
     public class IdentityController : ControllerBase
     {
 
