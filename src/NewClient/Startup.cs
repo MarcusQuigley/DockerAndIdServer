@@ -27,6 +27,7 @@ namespace NewClient
             services.AddControllersWithViews();
 
             services.AddHttpClient<IAnApiService, AnApiService>(c => c.BaseAddress = new Uri(Configuration["AnApiUri"]));
+            services.AddHttpClient<IWeatherService, WeatherService>(c => c.BaseAddress = new Uri(Configuration["AnApiUri"]));
 
         }
 

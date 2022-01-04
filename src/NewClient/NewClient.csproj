@@ -2,9 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>yellow-954cac05-7732-4aab-a123-d26cd0a58072</UserSecretsId>
   </PropertyGroup>
-<ItemGroup>
+  <ItemGroup>
     <PackageReference Include="IdentityModel" Version="4.3.1" />
   </ItemGroup>
 
 </Project>
+ 

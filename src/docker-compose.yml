@@ -1,0 +1,40 @@
+# docker build -t temp_catalog_api -f services/catalog/catalog.api/Dockerfile .  THis creates an image from the src dir...
+version: '3.4'
+
+services:
+
+  the-api:
+    container_name: the-api
+    build:
+      context: AnApi
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      IdentityUri: http://localhost/"
+    ports:
+      - 7200:80
+
+  the-identityserver:
+    container_name: the-identityserver
+    build:
+      context: IdentityServer
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    ports:
+      - 7300:80
+
+  the-client:
+    container_name: the-client
+    build:
+      context: NewClient
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+;http://+
+      ASPNETCORE_HTTPS_PORT: 8081
+      IdentityUri: http://the-identityserver/"
+      AnApiUri: "http://the-api"
+    ports:
+      - 7101:80
+      - 7100:443
+    volumes:
+      - ${APPDATA}\microsoft\UserSecrets\:/root/.microsoft/usersecrets
+      - ${USERPROFILE}\.aspnet\https:/root/.aspnet/https/

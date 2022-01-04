@@ -29,7 +29,7 @@ namespace AnApi
             services.AddAuthentication("Bearer")
             .AddJwtBearer("Bearer", options =>
             {
-                options.Authority = "http://localhost:7300";
+                options.Authority = Configuration["IdentityUri"];// "http://localhost:7300";
                 options.RequireHttpsMetadata = false;
 
                 options.TokenValidationParameters = new TokenValidationParameters
@@ -47,7 +47,7 @@ namespace AnApi
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //  app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseRouting();
 

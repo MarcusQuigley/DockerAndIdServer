@@ -15,19 +15,23 @@ namespace NewClient.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IAnApiService _apiService;
 
-        public HomeController(ILogger<HomeController> logger, IAnApiService apiService)
+        private readonly IWeatherService _weatherService;
+
+        public HomeController(ILogger<HomeController> logger, IAnApiService apiService, IWeatherService weatherService)
         {
             _logger = logger;
             _apiService = apiService;
+            _weatherService = weatherService;
         }
 
         public async Task<IActionResult> Index()
         {
+            // var data = await _apiService.UserData();
+            var data = await _weatherService.WeatherData();
 
-            var data = await _apiService.UserData();
+            var model = new UserModel() { Data = data };
 
-            var userModel = new UserModel() { Data = data };
-            return View(userModel);
+            return View(model);
         }
 
         public IActionResult Privacy()
